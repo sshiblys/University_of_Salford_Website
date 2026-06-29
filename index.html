@@ -602,6 +602,106 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
 .gs-no-results { padding:1.25rem; text-align:center; color:var(--ink3); font-size:.85rem }
 
 /* ════════════════════════════════
+   NEWS / VIDEO STRIP
+════════════════════════════════ */
+.news-strip { background:var(--white); border-bottom:1px solid var(--line) }
+.news-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:3rem; align-items:center; padding:3rem 0 }
+.news-media { position:relative; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:16/9; background:var(--navy) }
+.news-media img { width:100%; height:100%; object-fit:cover }
+.news-play {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(11,24,41,.25); transition:background var(--trans); cursor:pointer; border:none;
+}
+.news-play:hover { background:rgba(11,24,41,.4) }
+.news-play-btn {
+  width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.95);
+  display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg);
+  transition:transform var(--trans);
+}
+.news-play:hover .news-play-btn { transform:scale(1.08) }
+.news-play-btn svg { width:22px; height:22px; fill:var(--red); margin-left:2px }
+.news-text .sec-kicker { margin-bottom:.65rem }
+.news-text h2 { font-family:'Fraunces',serif; font-size:clamp(1.5rem,2.6vw,2rem); font-weight:600; color:var(--navy); line-height:1.25; margin-bottom:.85rem }
+.news-text p { font-size:.9rem; color:var(--ink3); line-height:1.75; margin-bottom:1.25rem; max-width:480px }
+
+/* ════════════════════════════════
+   IMAGE CARDS (About / Study / Research / Engage rows)
+════════════════════════════════ */
+.imgcard-row { display:grid; grid-template-columns:repeat(5,1fr); gap:1.1rem; margin-top:2.25rem }
+.imgcard-row.cols4 { grid-template-columns:repeat(4,1fr) }
+.imgcard-row.cols3 { grid-template-columns:repeat(3,1fr) }
+.imgcard {
+  position:relative; border-radius:var(--r-lg); overflow:hidden; cursor:pointer;
+  aspect-ratio:4/5; box-shadow:var(--shadow-sm); transition:transform var(--trans), box-shadow var(--trans);
+  background:var(--navy2);
+}
+.imgcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg) }
+.imgcard img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s ease }
+.imgcard:hover img { transform:scale(1.06) }
+.imgcard::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(11,24,41,.92) 0%, rgba(11,24,41,.35) 45%, transparent 70%);
+}
+.imgcard-label { position:absolute; left:0; right:0; bottom:0; padding:1rem .9rem; z-index:1 }
+.imgcard-t { font-size:.83rem; font-weight:700; color:#fff; line-height:1.3 }
+.imgcard-d { font-size:.7rem; color:rgba(255,255,255,.65); margin-top:.25rem; line-height:1.4 }
+.imgcard-arr { position:absolute; top:.8rem; right:.8rem; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.15); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; color:#fff; font-size:.75rem; z-index:1; transition:background var(--trans) }
+.imgcard:hover .imgcard-arr { background:var(--red) }
+
+/* Wide image card (Engage / single feature) */
+.imgcard-wide { position:relative; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow); aspect-ratio:16/10 }
+.imgcard-wide img { width:100%; height:100%; object-fit:cover; display:block }
+
+/* Category image cards w/ caption below (Study section) */
+.catcard { background:var(--white); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow var(--trans), transform var(--trans); cursor:pointer }
+.catcard:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px) }
+.catcard-img { aspect-ratio:4/3; overflow:hidden; background:var(--line2) }
+.catcard-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease }
+.catcard:hover .catcard-img img { transform:scale(1.07) }
+.catcard-body { padding:1.1rem 1.25rem }
+.catcard-t { font-size:.92rem; font-weight:700; color:var(--navy); margin-bottom:.3rem }
+.catcard-d { font-size:.78rem; color:var(--ink3); line-height:1.6; margin-bottom:.7rem }
+.catcard-link { font-size:.72rem; font-weight:600; color:var(--red); display:flex; align-items:center; gap:.25rem }
+
+/* ════════════════════════════════
+   ENGAGE SECTION
+════════════════════════════════ */
+.engage-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:3rem; align-items:center; margin-top:2rem }
+.engage-text p { font-size:.9rem; color:rgba(255,255,255,.62); line-height:1.8; margin-bottom:1rem }
+.engage-socials { display:flex; gap:.6rem; margin-top:1.25rem }
+.engage-social-btn { display:inline-flex; align-items:center; gap:.4rem; height:36px; padding:0 .9rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:100px; color:rgba(255,255,255,.75); font-size:.78rem; transition:background var(--trans) }
+.engage-social-btn:hover { background:rgba(255,255,255,.15); color:#fff; text-decoration:none }
+
+/* ════════════════════════════════
+   WORK WITH US
+════════════════════════════════ */
+.wwu-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:2rem }
+.wwu-card { position:relative; border-radius:var(--r-lg); overflow:hidden; aspect-ratio:16/9; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform var(--trans), box-shadow var(--trans) }
+.wwu-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg) }
+.wwu-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s ease }
+.wwu-card:hover img { transform:scale(1.06) }
+.wwu-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(11,24,41,.88) 0%, rgba(11,24,41,.25) 50%, transparent 75%) }
+.wwu-label { position:absolute; left:0; right:0; bottom:0; padding:1.4rem }
+.wwu-t { font-family:'Fraunces',serif; font-size:1.25rem; font-weight:600; color:#fff }
+.wwu-d { font-size:.8rem; color:rgba(255,255,255,.7); margin-top:.35rem; max-width:420px; line-height:1.55 }
+
+/* ════════════════════════════════
+   GENERIC CONTENT SUB-PAGE (About card detail views)
+════════════════════════════════ */
+.subpage-hero { position:relative; background:var(--navy); overflow:hidden }
+.subpage-hero img { width:100%; height:280px; object-fit:cover; display:block; opacity:.55 }
+.subpage-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, var(--navy) 5%, rgba(11,24,41,.35) 60%, rgba(11,24,41,.15) 100%) }
+.subpage-hero-text { position:absolute; left:0; right:0; bottom:0; max-width:1400px; margin:0 auto; padding:0 1.5rem 1.75rem; width:100%; box-sizing:border-box }
+.subpage-body { max-width:900px; margin:0 auto; padding:2.5rem 1.5rem 4rem }
+.subpage-body p { font-size:.92rem; color:var(--ink2); line-height:1.85; margin-bottom:1.1rem }
+.subpage-body h3 { font-family:'Fraunces',serif; font-size:1.2rem; color:var(--navy); font-weight:600; margin:1.75rem 0 .75rem }
+.subpage-imgs { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0 }
+.subpage-imgs img { width:100%; border-radius:var(--r-lg); aspect-ratio:4/3; object-fit:cover; box-shadow:var(--shadow-sm) }
+.subpage-imgs.single { grid-template-columns:1fr }
+.subpage-imgs.single img { aspect-ratio:16/9 }
+.subpage-links { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.5rem }
+
+/* ════════════════════════════════
    RESPONSIVE
 ════════════════════════════════ */
 @media(max-width:1024px) {
@@ -610,6 +710,11 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
   .about-grid { grid-template-columns:1fr }
   .dir-grid { grid-template-columns:1fr 1fr }
   .footer-grid { grid-template-columns:1fr 1fr; gap:2rem }
+  .news-grid { grid-template-columns:1fr; gap:1.75rem }
+  .imgcard-row { grid-template-columns:repeat(3,1fr) }
+  .imgcard-row.cols4 { grid-template-columns:repeat(2,1fr) }
+  .engage-grid { grid-template-columns:1fr; gap:1.75rem }
+  .wwu-grid { grid-template-columns:1fr }
 }
 @media(max-width:768px) {
   .nav-links { display:none }
@@ -620,6 +725,9 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
   .profile-body { grid-template-columns:1fr }
   .profile-hero-inner { flex-direction:column; align-items:flex-start }
   .hero-stats { flex-direction:column; gap:1.25rem }
+  .imgcard-row { grid-template-columns:repeat(2,1fr) }
+  .imgcard-row.cols3 { grid-template-columns:1fr 1fr }
+  .subpage-imgs { grid-template-columns:1fr }
 }
 @media(max-width:480px) {
   .util-bar { display:none }
@@ -658,9 +766,11 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
     <div class="nav-links" id="main-nav-links">
       <a href="#about">About</a>
       <a href="#leadership">Leadership</a>
+      <a href="#engage">Engage</a>
       <a href="#directorates">Directorates</a>
       <a href="#research">Research</a>
       <a href="#courses">Study</a>
+      <a href="#work-with-us">Work with us</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-actions">
@@ -720,6 +830,26 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
   </div>
 </div>
 
+<!-- NEWS / VIDEO -->
+<div class="news-strip">
+  <div class="container">
+    <div class="news-grid">
+      <div class="news-media">
+        <img src="https://www.salford.ac.uk/sites/default/files/styles/large_video/public/2025-03/SEE%20building_imresizer.jpg?itok=kZKKW0MW" alt="SEE Building" loading="lazy">
+        <button class="news-play" onclick="window.open('https://player.vimeo.com/video/1048859491?autoplay=1','_blank')" aria-label="Play video">
+          <span class="news-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+      </div>
+      <div class="news-text">
+        <div class="sec-kicker">School News</div>
+        <h2>Want to find out how Salford is shaping science, engineering and the environment?</h2>
+        <p>Browse our latest student, research and industry stories from across the School of Science, Engineering and Environment.</p>
+        <a href="https://www.salford.ac.uk/news?category=School%20of%20Science%2C%20Engineering%20and%20Environment" target="_blank" class="btn-primary">Latest News →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section class="section alt" id="about">
   <div class="container">
@@ -727,13 +857,17 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
     <h2 class="sec-title">The University of Salford's largest school</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Formed from three pioneering schools, SEE unites world-class research and teaching across science, engineering, computing, and the built and natural environment. Our £65m SEE Building — winner of the RIBA Award 2025 — provides 15,300 m² of state-of-the-art teaching and collaboration space.</p>
+        <p>We nurture the next generation of brilliant minds, bring innovation to industry and transform livelihoods in our communities. Formed from three pioneering schools, SEE unites world-class research and teaching across science, engineering, computing, and the built and natural environment.</p>
         <ul class="feat-list">
           <li class="feat-item"><span class="feat-item-icon">🔬</span><div><span class="feat-item-t">World-leading research</span><span class="feat-item-d">Five specialist research centres tackling net zero, climate change, healthy living and smart cities.</span></div></li>
           <li class="feat-item"><span class="feat-item-icon">🤝</span><div><span class="feat-item-t">Industry at the core</span><span class="feat-item-d">Students and academics working on real-world projects with leading industry partners from day one.</span></div></li>
           <li class="feat-item"><span class="feat-item-icon">🌍</span><div><span class="feat-item-t">Civic impact</span><span class="feat-item-d">Transforming livelihoods and driving innovation across Greater Manchester and beyond.</span></div></li>
           <li class="feat-item"><span class="feat-item-icon">🏆</span><div><span class="feat-item-t">Accredited excellence</span><span class="feat-item-d">BCS, RAeS, ICE and RICS-accredited degrees with outstanding graduate employment outcomes.</span></div></li>
         </ul>
+        <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap">
+          <a href="https://www.salford.ac.uk/our-staff?unit_of_work=School%20of%20Science%2C%20Engineering%20%26%20Environment" target="_blank" class="btn-outline" style="border-color:var(--line);color:var(--navy)">Staff Directory ↗</a>
+          <a href="https://universityofsalford.tal.net/vx/lang-en-GB/mobile-0/appcentre-ext/brand-4/xf-f537fde2780a/candidate/jobboard/vacancy/3/adv/" target="_blank" class="btn-outline" style="border-color:var(--line);color:var(--navy)">Current Vacancies ↗</a>
+        </div>
       </div>
       <div>
         <div class="stat-board">
@@ -743,6 +877,36 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
           <div class="stat-tile"><div class="stat-n">5</div><div class="stat-l">Research Centres</div></div>
           <div class="stat-tile span2"><div class="stat-n">RIBA 2025</div><div class="stat-l">Best Educational Building · SEE Building</div></div>
         </div>
+      </div>
+    </div>
+
+    <div class="imgcard-row cols4" style="margin-top:3rem">
+      <div class="imgcard" onclick="showSubpage('labs')">
+        <img src="https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2023-02/EnergyHouse1Researcher-1500x500.jpg?itok=xxlXqztT" alt="Laboratories and Facilities" loading="lazy">
+        <div class="imgcard-arr">→</div>
+        <div class="imgcard-label"><div class="imgcard-t">Laboratories and Facilities</div><div class="imgcard-d">Inside our world-class research labs</div></div>
+      </div>
+      <div class="imgcard" onclick="showSubpage('building')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2024-08/New%20SEE%20Building%20Mar22.jpg" alt="SEE Building" loading="lazy">
+        <div class="imgcard-arr">→</div>
+        <div class="imgcard-label"><div class="imgcard-t">SEE Building</div><div class="imgcard-d">Our £65m award-winning home</div></div>
+      </div>
+      <div class="imgcard" onclick="showSubpage('contact-connect')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2024-01/13W005_M187_medium.width-1600%201_0.jpg" alt="Contact and connect" loading="lazy">
+        <div class="imgcard-arr">→</div>
+        <div class="imgcard-label"><div class="imgcard-t">Contact and Connect</div><div class="imgcard-d">Get in touch with the school</div></div>
+      </div>
+      <div class="imgcard" onclick="showSubpage('projects')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2022-03/Energy%20House%202.0%20Mar22.jpg" alt="Projects and Developments" loading="lazy">
+        <div class="imgcard-arr">→</div>
+        <div class="imgcard-label"><div class="imgcard-t">Projects and Developments</div><div class="imgcard-d">Energy House 2.0, NERIC &amp; more</div></div>
+      </div>
+    </div>
+    <div class="imgcard-row cols4" style="margin-top:1.1rem">
+      <div class="imgcard" style="grid-column:1/3" onclick="showSubpage('agm')">
+        <img src="https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2021-12/SEE%20Accordion%20Geography%20Seasonal.jpg?itok=ifWgdJpO" alt="Advancing Greater Manchester" loading="lazy">
+        <div class="imgcard-arr">→</div>
+        <div class="imgcard-label"><div class="imgcard-t">Advancing Greater Manchester</div><div class="imgcard-d">Ignition, GM Cyber Foundry &amp; GM AI Foundry — partnering with the region</div></div>
       </div>
     </div>
   </div>
@@ -790,6 +954,27 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
   </div>
 </section>
 
+<!-- ENGAGE -->
+<section class="section navy" id="engage">
+  <div class="container">
+    <div class="sec-kicker" style="color:var(--amber)">Engage</div>
+    <h2 class="sec-title light">Sharing research, enterprise and innovation</h2>
+    <div class="engage-grid">
+      <div class="engage-text">
+        <p>Engage is a creative space that supports the University's engagement forum and shares our research, enterprise and innovation.</p>
+        <p>From festival curation to science communication, our multidisciplinary team creates activities for the general public, academics, students and industry professionals.</p>
+        <a href="https://scicomm.space/" target="_blank" class="btn-primary">Explore Engage →</a>
+        <div class="engage-socials">
+          <a class="engage-social-btn" href="https://twitter.com/EngageSalford" target="_blank">𝕏 @EngageSalford</a>
+        </div>
+      </div>
+      <div class="imgcard-wide">
+        <img src="https://www.salford.ac.uk/sites/default/files/2022-09/SEE%20Accordion%20Microbihome.jpg" alt="Microbihome — Engage research communication" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DIRECTORATES -->
 <section class="section alt" id="directorates">
   <div class="container">
@@ -829,7 +1014,7 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
         <div class="dir-body">
           <div class="dir-director-row" onclick="showLeaderProfile('mo-saraee')">
             <div class="dir-dir-av" style="background:#0d3c6e">MS</div>
-            <div><div class="dir-dir-name">Mo Saraee</div><div class="dir-dir-role">Director — Computer Science</div></div>
+            <div><div class="dir-dir-name">Mo Saraee</div><div class="dir-dir-role">Director — Computer Science &amp; Engineering</div></div>
           </div>
           <div class="disc-label">Disciplines — click to browse staff</div>
           <div class="disc-pills">
@@ -869,8 +1054,33 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
 <section class="section navy" id="research">
   <div class="container">
     <div class="sec-kicker" style="color:var(--amber)">Research &amp; Innovation</div>
-    <h2 class="sec-title light">Five world-class research centres</h2>
-    <p class="sec-sub" style="color:rgba(255,255,255,.55); margin-bottom:0">Tackling net zero, climate change, healthy living and smart cities. Click any card to view the director's profile.</p>
+    <h2 class="sec-title light">Research with us</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.55); margin-bottom:0">Salford has a long tradition of transforming individuals and communities through excellent research, innovation, and engagement. Across acoustics, human and natural sciences, the built environment, engineering, computing and robotics, we help you engage with co-created, transformational research.</p>
+
+    <div class="imgcard-row cols4" style="margin-top:2.25rem">
+      <div class="imgcard" onclick="window.open('https://www.salford.ac.uk/research/technology-transfer','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2021-07/AI%20Foundry.jpg" alt="Technology transfer" loading="lazy">
+        <div class="imgcard-arr">↗</div>
+        <div class="imgcard-label"><div class="imgcard-t">Technology Transfer</div></div>
+      </div>
+      <div class="imgcard" onclick="window.open('https://blogs.salford.ac.uk/research/','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2021-04/Cyber%20Security%20Block%20Image.jpg" alt="Research with impact" loading="lazy">
+        <div class="imgcard-arr">↗</div>
+        <div class="imgcard-label"><div class="imgcard-t">Research with Impact</div></div>
+      </div>
+      <div class="imgcard" onclick="window.open('https://www.salford.ac.uk/school-of-science-engineering-and-environment/postgraduate-research-in-the-school-of-science-engineering-and-environment','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2024-02/International-robotics.jpg" alt="Postgraduate Research" loading="lazy">
+        <div class="imgcard-arr">↗</div>
+        <div class="imgcard-label"><div class="imgcard-t">Postgraduate Research</div><div class="imgcard-d">The largest school at Salford</div></div>
+      </div>
+      <div class="imgcard" onclick="window.open('https://www.salford.ac.uk/school-of-science-engineering-and-environment/research-centres-and-clusters','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2022-03/Energy%20House%202.0%20Mar22.jpg" alt="Research Centres and Clusters" loading="lazy">
+        <div class="imgcard-arr">↗</div>
+        <div class="imgcard-label"><div class="imgcard-t">Research Centres &amp; Clusters</div></div>
+      </div>
+    </div>
+
+    <div class="ad-section-label" style="color:rgba(255,255,255,.4);margin-top:2.5rem">Five world-class research centres — click any card to view the director's profile</div>
     <div class="rc-grid">
       <div class="rc-card" onclick="showLeaderProfile('claire-lomax')"><div class="rc-icon-wrap">🔊</div><div class="rc-name">Acoustics Research Centre</div><div class="rc-lead">Director: Claire Lomax</div><div class="rc-desc">UK's Designated Institute for Airborne Acoustics Metrology. UKAS-accredited testing and new £24m Acoustics Building (2027).</div><div class="rc-arr">View director →</div></div>
       <div class="rc-card" onclick="showLeaderProfile('william-swan')"><div class="rc-icon-wrap">⚡</div><div class="rc-name">Energy House Labs</div><div class="rc-lead">Director: Will Swan</div><div class="rc-desc">Queen Elizabeth Award-winning facility with full-scale homes in climate-controlled chambers for net zero research.</div><div class="rc-arr">View director →</div></div>
@@ -886,7 +1096,23 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
   <div class="container">
     <div class="sec-kicker">Study at SEE</div>
     <h2 class="sec-title">Industry-connected degrees</h2>
-    <p class="sec-sub" style="margin-bottom:1.5rem">Nearly 200 career-focused programmes at undergraduate, postgraduate and doctoral level.</p>
+    <p class="sec-sub" style="margin-bottom:1.5rem">Whether you're just starting your higher education studies or advancing with postgraduate study, you'll thrive in our nurturing, industry-focused learning environment — with nearly 200 career-focused programmes at undergraduate, postgraduate and doctoral level.</p>
+
+    <div class="imgcard-row cols3" style="margin-bottom:2.5rem">
+      <div class="catcard" onclick="window.open('https://www.salford.ac.uk/school-of-science-engineering-and-environment/undergraduate-courses','_blank')">
+        <div class="catcard-img"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Architecture%20Students%20Group.jpg" alt="Architecture students working together" loading="lazy"></div>
+        <div class="catcard-body"><div class="catcard-t">Undergraduate Courses</div><div class="catcard-d">From architecture to zoology — industry-focused BSc, BEng and MEng degrees.</div><div class="catcard-link">Explore undergraduate ↗</div></div>
+      </div>
+      <div class="catcard" onclick="window.open('https://www.salford.ac.uk/school-of-science-engineering-and-environment/postgraduate-courses','_blank')">
+        <div class="catcard-img"><img src="https://www.salford.ac.uk/sites/default/files/2021-12/SEE%20Accordion%20Bioscience%20Focus.jpg" alt="Chemistry student using a pipette in a laboratory" loading="lazy"></div>
+        <div class="catcard-body"><div class="catcard-t">Postgraduate Courses</div><div class="catcard-d">MSc, MRes and taught postgraduate routes to enhance your skills and knowledge.</div><div class="catcard-link">Explore postgraduate ↗</div></div>
+      </div>
+      <div class="catcard" onclick="window.open('https://www.salford.ac.uk/apprenticeships/apprenticeships-for-students','_blank')">
+        <div class="catcard-img"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordian%20Civil%20Engineering%20Constructionarium.jpg" alt="Civil engineering student at Constructionarium" loading="lazy"></div>
+        <div class="catcard-body"><div class="catcard-t">Degree Apprenticeships</div><div class="catcard-d">Earn while you learn — work-integrated routes across engineering and construction.</div><div class="catcard-link">Explore apprenticeships ↗</div></div>
+      </div>
+    </div>
+
     <div class="tab-bar">
       <button class="tab-chip active" onclick="filterCourses(this,'all')">All Areas</button>
       <button class="tab-chip" onclick="filterCourses(this,'science')">Sciences</button>
@@ -896,12 +1122,38 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
       <button class="tab-chip" onclick="filterCourses(this,'acoustics')">Acoustics</button>
     </div>
     <div class="course-grid">
-      <div class="course-card" data-cat="science"><div class="cc-icon">🧬</div><div class="cc-title">Human &amp; Natural Sciences</div><div class="cc-desc">From molecular biology to ecosystem science — explore life and the environment at every scale.</div><div class="cc-pills"><span class="cc-pill">Biomedical Science</span><span class="cc-pill">Biology</span><span class="cc-pill">Wildlife Conservation</span><span class="cc-pill">Chemistry</span><span class="cc-pill">Physics</span></div></div>
-      <div class="course-card" data-cat="computing"><div class="cc-icon">💻</div><div class="cc-title">Computer Science &amp; Cyber Security</div><div class="cc-desc">BCS-accredited degrees for the digital economy. Lead the next generation of secure, intelligent systems.</div><div class="cc-pills"><span class="cc-pill">Computer Science</span><span class="cc-pill">Cyber Security</span><span class="cc-pill">Software Engineering</span><span class="cc-pill">Data Science</span></div></div>
-      <div class="course-card" data-cat="engineering"><div class="cc-icon">⚙️</div><div class="cc-title">Engineering</div><div class="cc-desc">Hands-on, industry-led courses from aeronautics to civil engineering. Accredited by leading professional bodies.</div><div class="cc-pills"><span class="cc-pill">Aeronautical</span><span class="cc-pill">Mechanical</span><span class="cc-pill">Civil</span><span class="cc-pill">Electrical &amp; Electronic</span></div></div>
-      <div class="course-card" data-cat="acoustics"><div class="cc-icon">🔊</div><div class="cc-title">Acoustics &amp; Audio</div><div class="cc-desc">A globally unique programme at the world's leading acoustics school. Shape how the world sounds.</div><div class="cc-pills"><span class="cc-pill">Audio Engineering</span><span class="cc-pill">Acoustics BEng</span><span class="cc-pill">Sound Design</span></div></div>
-      <div class="course-card" data-cat="built"><div class="cc-icon">🏛️</div><div class="cc-title">Architecture &amp; Built Environment</div><div class="cc-desc">RIBA and RICS-accredited degrees designing and constructing the sustainable cities of tomorrow.</div><div class="cc-pills"><span class="cc-pill">Architecture</span><span class="cc-pill">Quantity Surveying</span><span class="cc-pill">Construction Management</span></div></div>
-      <div class="course-card" data-cat="engineering"><div class="cc-icon">🤖</div><div class="cc-title">Robotics &amp; Autonomous Systems</div><div class="cc-desc">Pioneer the next generation of intelligent machines. Work alongside world-class robotics researchers.</div><div class="cc-pills"><span class="cc-pill">Robotics</span><span class="cc-pill">Artificial Intelligence</span><span class="cc-pill">Mechatronics</span></div></div>
+      <div class="course-card" data-cat="science"><img src="https://www.salford.ac.uk/sites/default/files/2021-04/SEE%20Accordion%20Bioscience%20Snapshot.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">🧬</div><div class="cc-title">Human &amp; Natural Sciences</div><div class="cc-desc">From molecular biology to ecosystem science — explore life and the environment at every scale.</div><div class="cc-pills"><span class="cc-pill">Biomedical Science</span><span class="cc-pill">Biology</span><span class="cc-pill">Wildlife Conservation</span><span class="cc-pill">Chemistry</span><span class="cc-pill">Physics</span></div></div>
+      <div class="course-card" data-cat="computing"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Computer%20Science.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">💻</div><div class="cc-title">Computer Science &amp; Cyber Security</div><div class="cc-desc">BCS-accredited degrees for the digital economy. Lead the next generation of secure, intelligent systems.</div><div class="cc-pills"><span class="cc-pill">Computer Science</span><span class="cc-pill">Cyber Security</span><span class="cc-pill">Software Engineering</span><span class="cc-pill">Data Science</span></div></div>
+      <div class="course-card" data-cat="engineering"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Mechanical%20Engineering%20Students.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">⚙️</div><div class="cc-title">Engineering</div><div class="cc-desc">Hands-on, industry-led courses from aeronautics to civil engineering. Accredited by leading professional bodies.</div><div class="cc-pills"><span class="cc-pill">Aeronautical</span><span class="cc-pill">Mechanical</span><span class="cc-pill">Civil</span><span class="cc-pill">Electrical &amp; Electronic</span></div></div>
+      <div class="course-card" data-cat="acoustics"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordian%20Acoustical%20Engineering.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">🔊</div><div class="cc-title">Acoustics &amp; Audio</div><div class="cc-desc">A globally unique programme at the world's leading acoustics school. Shape how the world sounds.</div><div class="cc-pills"><span class="cc-pill">Audio Engineering</span><span class="cc-pill">Acoustics BEng</span><span class="cc-pill">Sound Design</span></div></div>
+      <div class="course-card" data-cat="built"><img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Architecture%20Students%20Group.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">🏛️</div><div class="cc-title">Architecture &amp; Built Environment</div><div class="cc-desc">RIBA and RICS-accredited degrees designing and constructing the sustainable cities of tomorrow.</div><div class="cc-pills"><span class="cc-pill">Architecture</span><span class="cc-pill">Quantity Surveying</span><span class="cc-pill">Construction Management</span></div></div>
+      <div class="course-card" data-cat="engineering"><img src="https://www.salford.ac.uk/sites/default/files/2024-02/International-robotics.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r) var(--r) 0 0;margin:-1.5rem -1.5rem .9rem;display:block" loading="lazy" onerror="this.style.display='none'"><div class="cc-icon">🤖</div><div class="cc-title">Robotics &amp; Autonomous Systems</div><div class="cc-desc">Pioneer the next generation of intelligent machines. Work alongside world-class robotics researchers.</div><div class="cc-pills"><span class="cc-pill">Robotics</span><span class="cc-pill">Artificial Intelligence</span><span class="cc-pill">Mechatronics</span></div></div>
+    </div>
+
+    <div class="news-media" style="margin-top:2.5rem;max-width:640px">
+      <img src="https://www.salford.ac.uk/sites/default/files/styles/large_video/public/2020-05/12236.jpg?itok=utVnkQm1" alt="Science Engineering and Environment student" loading="lazy">
+      <button class="news-play" onclick="window.open('https://player.vimeo.com/video/415539884?autoplay=1','_blank')" aria-label="Play video">
+        <span class="news-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WORK WITH US -->
+<section class="section alt" id="work-with-us">
+  <div class="container">
+    <div class="sec-kicker">Engage</div>
+    <h2 class="sec-title">Work with us</h2>
+    <p class="sec-sub" style="margin-bottom:0">Industry collaborations, research partnerships, international exchanges, outreach activities — these are just some of the ways we can engage and work together.</p>
+    <div class="wwu-grid">
+      <div class="wwu-card" onclick="window.open('https://www.salford.ac.uk/schools-and-colleges','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Architecture%20Students%20Group.jpg" alt="Schools and Colleges" loading="lazy">
+        <div class="wwu-label"><div class="wwu-t">Schools and Colleges</div><div class="wwu-d">Our Recruitment and Widening Participation teams support students making informed decisions about their future.</div></div>
+      </div>
+      <div class="wwu-card" onclick="window.open('https://www.salford.ac.uk/alumni','_blank')">
+        <img src="https://www.salford.ac.uk/sites/default/files/2021-02/SEE%20Accordion%20Computer%20Science.jpg" alt="Alumni" loading="lazy">
+        <div class="wwu-label"><div class="wwu-t">Alumni</div><div class="wwu-d">As a Salford graduate, you're part of a global alumni community — stay connected and build new connections.</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1081,6 +1333,37 @@ footer { background:var(--navy); padding:3rem 0 1.5rem }
     </div>
   </div>
   <div id="lp-content"><div class="loading-wrap"><div class="spinner"></div>Loading profile…</div></div>
+</div>
+
+<!-- ══════════ GENERIC SUBPAGE VIEW (About cards) ══════════ -->
+<div id="view-subpage" class="view">
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#" onclick="showView('main');return false">
+        <div class="brand-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="brand-text"><div class="brand-univ">University of Salford</div><div class="brand-school">Science, Engineering &amp; Environment</div></div>
+      </a>
+      <div class="nav-actions" style="margin-left:auto">
+        <a class="back-btn" href="#" onclick="navBack();return false">← Back</a>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <div class="bc-inner">
+      <a href="#" onclick="showView('main');return false">SEE School</a>
+      <span class="bc-sep">›</span>
+      <span id="sub-bc-name" class="bc-cur"></span>
+    </div>
+  </div>
+  <div class="subpage-hero">
+    <img id="sub-hero-img" src="" alt="">
+    <div class="subpage-hero-overlay"></div>
+    <div class="subpage-hero-text">
+      <div class="page-h1" id="sub-title" style="margin-bottom:.3rem"></div>
+      <div class="page-sub" id="sub-sub"></div>
+    </div>
+  </div>
+  <div class="subpage-body" id="sub-content"></div>
 </div>
 
 <script>
@@ -1319,7 +1602,7 @@ const LEADERS={
 'gemma-lace':{name:'Gemma Lace',initials:'GL',color:'#880e4f',role:'Associate Dean — Academic & Student Experience',wtId:'',bio:"Gemma Lace is Associate Dean for Academic and Student Experience in SEE, leading initiatives to enhance every aspect of the student journey from pre-arrival through to graduation, including pastoral support, wellbeing and graduate employability.",expertise:['Student Experience','Academic Support','Student Wellbeing','Graduate Employability'],quals:[]},
 'andrew-fleming':{name:'Andrew Fleming',initials:'AF',color:'#1a5fa8',role:'Director — Admissions & Recruitment',wtId:'',bio:"Andrew Fleming is Director of Admissions and Recruitment for SEE, leading the school's strategy to attract, recruit and convert talented students from across the UK and internationally, overseeing schools outreach, open days and widening participation.",expertise:['Student Recruitment','Admissions Strategy','Widening Participation','Marketing'],quals:[]},
 'niroshini-nirmalan':{name:'Professor Niroshini Nirmalan',initials:'NN',color:'#004d40',role:'Interim Director HANS; Professor of Molecular Bioscience',wtId:'1162391',bio:"Professor Niroshini Nirmalan is Interim Director of the Human and Natural Sciences Directorate and Professor of Molecular Bioscience at the University of Salford. Her research focuses on antimalarial drug repositioning using proteomic and mass spectrometric approaches. She was promoted to Professor in 2017.",expertise:['Molecular Bioscience','Antimalarial Drug Discovery','Proteomics','Molecular Immunology'],quals:['MBBS — University of Colombo, Sri Lanka','MSc, Molecular Parasitology','PhD, Molecular Immunology — University of Salford','Professor (promoted 2017)']},
-'mo-saraee':{name:'Professor Mo Saraee',initials:'MS',color:'#0d3c6e',role:'Professor of Data Science; Director of Computer Science',wtId:'1160360',bio:"Professor Mo Saraee holds a chair in Data Science and is Director of Computer Science at the University of Salford. He received his PhD from the University of Manchester. His research covers Data Science, Machine Learning, NLP, Big Data, and Medical Informatics with over 150 publications.",expertise:['Data Science','Machine Learning','NLP','Big Data','Medical Informatics'],quals:['PhD, Computer Science — University of Manchester','Professor of Data Science']},
+'mo-saraee':{name:'Professor Mo Saraee',initials:'MS',color:'#0d3c6e',role:'Professor of Data Science; Director of Computer Science &amp; Engineering',wtId:'1160360',bio:"Professor Mo Saraee holds a chair in Data Science and is Director of Computer Science &amp; Engineering at the University of Salford. He received his PhD from the University of Manchester. His research covers Data Science, Machine Learning, NLP, Big Data, and Medical Informatics with over 150 publications.",expertise:['Data Science','Machine Learning','NLP','Big Data','Medical Informatics'],quals:['PhD, Computer Science — University of Manchester','Professor of Data Science']},
 'peter-walker':{name:'Peter Walker',initials:'PW',color:'#1b5e20',role:'Director — DSBNE',wtId:'',bio:"Peter Walker is Director of the Directorate of Sustainable Built and Natural Environment (DSBNE) at the University of Salford, providing academic and strategic leadership across architecture, property surveying, construction management, civil engineering, acoustics, geography and environmental management.",expertise:['Built Environment','Sustainable Construction','Architecture','Environmental Management'],quals:[]},
 'claire-lomax':{name:'Claire Lomax',initials:'CL',color:'#C8102E',role:'Director — Acoustics Research Centre & NIAAM',wtId:'1153298',bio:"Claire Lomax is Laboratory Director of the Acoustics Laboratories and Director of the National Institute of Airborne Acoustic Metrology at the University of Salford — the UK's Designated Institute for Airborne Acoustics. She is leading development of the University's new £24m Acoustics Building due to open in 2027.",expertise:['Acoustic Metrology','UKAS Acoustic Testing','Industrial R&D','National Standards'],quals:['Director, UK National Institute of Airborne Acoustic Metrology']},
 'william-swan':{name:'Professor Will Swan',initials:'WS',color:'#c47f17',role:'Director — Energy House Labs; Director of Sustainability',wtId:'1153061',bio:"Professor Will Swan is the Director of the Queen Elizabeth Award winning Energy House Laboratories at the University of Salford, where he has led energy and buildings research for over 10 years. He is also Director of Sustainability for the University of Salford and is leading a £3.2m UKRI Future Homes Innovation Accelerator project.",expertise:['Net Zero Buildings','Domestic Retrofit','Building Performance','Energy Efficiency'],quals:['Professor','Queen Elizabeth Prize — Energy House Labs (team)']},
@@ -1327,6 +1610,110 @@ const LEADERS={
 'nicola-ronzii':{name:'Nicola Ronzii',initials:'NR',color:'#0d3c6e',role:'Director — NERIC',wtId:'',bio:"Nicola Ronzii is Director of NERIC — the National Electrical Vehicle and Robotics Innovation Centre at the University of Salford, a world-class research facility for autonomous systems, electric vehicle technology and advanced robotics.",expertise:['Robotics','Autonomous Systems','Electric Vehicles','Innovation Management'],quals:[]},
 'terrence-fernando':{name:'Professor Terrence Fernando',initials:'TF',color:'#1b5e20',role:'Professor & Director — THINKlab',wtId:'1153075',bio:"Professor Terrence Fernando is the founding Director of THINKlab at the University of Salford. He was Scientific Director of the EU-funded CoSpaces project (17 partners, €12m) and won the national 'Best BIM Project of the Year' award in 2006 with Network Rail. The World Bank appointed the University of Salford as consultant to develop a climate resilience programme for Sri Lanka.",expertise:['3D Visualisation','Virtual Reality','Urban Simulation','Disaster Risk Reduction','BIM'],quals:['Professor','Best BIM Project of the Year 2006']},
 };
+
+/* ═══ SUBPAGES (About-row detail content, mirrors salford.ac.uk/school-of-science-engineering-and-environment) ═══ */
+const SUBPAGES = {
+  labs:{
+    title:'Laboratories and Facilities',
+    sub:'World-class research and teaching facilities across the School',
+    hero:'https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2023-02/EnergyHouse1Researcher-1500x500.jpg?itok=xxlXqztT',
+    body:`<p>SEE School is home to an exceptional range of laboratories and facilities supporting research and teaching across science, engineering and the built environment — from full-scale climate-controlled houses to digital fabrication hubs and physics labs.</p>
+    <div class="subpage-imgs">
+      <img src="https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2023-02/EnergyHouse1Researcher-1500x500.jpg?itok=xxlXqztT" alt="Energy House Labs" loading="lazy">
+      <img src="https://www.salford.ac.uk/sites/default/files/2024-02/International-robotics.jpg" alt="Autonomous Systems and Robotics" loading="lazy">
+    </div>
+    <h3>Facilities</h3>
+    <ul class="p-quals">
+      <li><a href="https://www.salford.ac.uk/our-facilities/energy-house-labs" target="_blank">Energy House Labs</a> — shaping the future of energy</li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/thinklab" target="_blank">THINKlab</a> — collaborating with research and commercial partners</li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/acoustics" target="_blank">Acoustics</a> — bespoke testing and consultancy in audio and human perception</li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/automotive-autonomous-vehicle-technology-labs" target="_blank">Automotive &amp; Autonomous Vehicle Technology Labs</a></li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/bodmer-labs" target="_blank">Bodmer Labs</a> — advanced laboratory skills</li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/salford-advanced-laboratory-for-testing-and-engineering-consultancy" target="_blank">Salford Advanced Laboratory for Testing and Engineering Consultancy</a></li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/joule-physics-laboratories" target="_blank">Joule Physics Laboratories</a> — optics, lasers and materials</li>
+      <li><a href="https://www.salford.ac.uk/giving/impact/morson-maker-space" target="_blank">Morson Maker Space</a> — digital fabrication hub</li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/petroleum-and-gas-labs" target="_blank">Petroleum and Gas Labs</a></li>
+      <li><a href="https://www.salford.ac.uk/our-facilities/autonomous-systems-and-robotics" target="_blank">Autonomous Systems and Robotics</a></li>
+    </ul>`,
+    links:[{t:'View on salford.ac.uk ↗',u:'https://www.salford.ac.uk/school-of-science-engineering-and-environment/laboratories-and-facilities'}]
+  },
+  building:{
+    title:'SEE Building',
+    sub:'A new home for innovation on campus',
+    hero:'https://www.salford.ac.uk/sites/default/files/2024-08/New%20SEE%20Building%20Mar22.jpg',
+    body:`<p>Five years in the making, and delivered during a global pandemic, our iconic SEE Building is now open. A multidisciplinary hub for teaching, research and industry collaboration, the building is home to staff, students and researchers in the School of Science, Engineering and Environment.</p>
+    <p>Part of the University's ambitious campus masterplan, SEE Building signifies its intent to be a leading sustainable and transformational civic university for our communities — spanning four storeys and 15,550 square metres, 100% electric-powered.</p>
+    <div class="subpage-imgs">
+      <img src="https://www.salford.ac.uk/sites/default/files/2024-01/13W005_M187_medium.width-1600%201_0.jpg" alt="SEE Building exterior" loading="lazy">
+      <img src="https://www.salford.ac.uk/sites/default/files/2024-08/New%20SEE%20Building%20Mar22.jpg" alt="SEE Building exterior 2" loading="lazy">
+    </div>
+    <h3>Explore further</h3>
+    <ul class="p-quals">
+      <li><a href="https://www.salford.ac.uk/school-of-science-engineering-and-environment/design-and-construction" target="_blank">Design and Construction</a> — learn about the creation of SEE Building</li>
+      <li><a href="https://www.salford.ac.uk/school-of-science-engineering-and-environment/features-and-floorplans" target="_blank">Features and Floorplans</a> — facilities and resources inside</li>
+      <li><a href="https://www.salford.ac.uk/school-of-science-engineering-and-environment/study-opportunities" target="_blank">Study Opportunities</a></li>
+    </ul>`,
+    links:[{t:'View on salford.ac.uk ↗',u:'https://www.salford.ac.uk/school-of-science-engineering-and-environment/see-building'},{t:'360° virtual tour ↗',u:'https://webassets.salford.ac.uk/vod-360-2023-2/index.html?360=2920001'}]
+  },
+  'contact-connect':{
+    title:'Contact and Connect',
+    sub:'Get in touch with the School of Science, Engineering and Environment',
+    hero:'https://www.salford.ac.uk/sites/default/files/2024-01/13W005_M187_medium.width-1600%201_0.jpg',
+    body:`<p>Whether you're a prospective student, researcher, or industry partner, the School's team is here to help you find the right pathway — from course enquiries to research collaboration and business partnerships.</p>
+    <h3>Get in touch</h3>
+    <ul class="p-quals">
+      <li>📍 SEE Building, University of Salford, Salford Crescent, Salford M5 4WT</li>
+      <li>✉ <a href="mailto:see-enquiries@salford.ac.uk">see-enquiries@salford.ac.uk</a></li>
+      <li>📞 +44 (0)161 295 5000</li>
+      <li><a href="https://www.salford.ac.uk/contact-us" target="_blank">General contact us page ↗</a></li>
+      <li><a href="https://www.salford.ac.uk/contact-us/course-enquiries" target="_blank">Course enquiries ↗</a></li>
+      <li><a href="https://www.salford.ac.uk/travel" target="_blank">Travel to the university ↗</a></li>
+    </ul>`,
+    links:[{t:'View on salford.ac.uk ↗',u:'https://www.salford.ac.uk/school-of-science-engineering-and-environment/contact-and-connect'}]
+  },
+  projects:{
+    title:'Projects and Developments',
+    sub:'Energy House 2.0 · Northern Engineering and Robotics Innovation Centre · New School Building',
+    hero:'https://www.salford.ac.uk/sites/default/files/2024-01/13W005_M187_medium.width-1600%201_0.jpg',
+    body:`<h3>Energy House 2.0</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/2022-03/Energy%20House%202.0%20Mar22.jpg" alt="Energy House 2.0 entrance" loading="lazy"></div>
+    <p>To achieve net zero, we need a step change in the design of new buildings. Our new, world-leading Energy House 2.0 laboratory is the largest test and research facility of its type and will take a leading role in developing new low carbon homes and retrofit technologies. <a href="https://energyhouse2.salford.ac.uk/" target="_blank">Find out more ↗</a></p>
+    <h3>Northern Engineering and Robotics Innovation Centre (NERIC)</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/2024-02/International-robotics.jpg" alt="Boston Dynamics robot at NERIC" loading="lazy"></div>
+    <p>Digital innovation is changing our world. Our Northern Engineering and Robotics Innovation Centre will be a beacon for the University's robotics and automation specialisms. <a href="https://www.salford.ac.uk/school-of-science-engineering-and-environment/northern-engineering-and-robotics-innovation-centre" target="_blank">Find out more ↗</a></p>
+    <h3>New School Building</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/2024-08/New%20SEE%20Building%20Mar22.jpg" alt="New SEE building exterior" loading="lazy"></div>
+    <p>Our new £65 million hub for discovery and innovation at the heart of Peel Park campus — four storeys, 15,550 square metres, 100% electric-powered, and part of the Crescent Masterplan regeneration scheme. <a href="https://www.salford.ac.uk/school-of-science-engineering-and-environment/new-science-engineering-and-environment-building" target="_blank">Find out more ↗</a></p>`,
+    links:[{t:'View on salford.ac.uk ↗',u:'https://www.salford.ac.uk/school-of-science-engineering-and-environment/projects-and-developments'}]
+  },
+  agm:{
+    title:'Advancing Greater Manchester',
+    sub:'Ignition · GM Cyber Foundry · GM AI Foundry',
+    hero:'https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2021-12/SEE%20Accordion%20Geography%20Seasonal.jpg?itok=ifWgdJpO',
+    body:`<h3>Ignition</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/styles/16x9_medium/public/2021-12/SEE%20Accordion%20Geography%20Seasonal.jpg?itok=ifWgdJpO" alt="Ignition Living Lab green wall" loading="lazy"></div>
+    <p>Nature-based solutions in urban areas can help tackle climate change. The €4.6 million EU-funded IGNITION Project set a target to uplift green infrastructure in Greater Manchester and develop business models for investment in nature-based solutions. The NBS Living Lab at Salford provides a retrofit installation showcasing climate mitigation solutions. <a href="https://hub.salford.ac.uk/ignition-living-lab/" target="_blank">Ignition Living Lab ↗</a></p>
+    <h3>GM Cyber Foundry</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/2021-04/Cyber%20Security%20Block%20Image.jpg" alt="Cyber security" loading="lazy"></div>
+    <p>The University of Salford is a partner in the Greater Manchester Cyber Foundry — a programme helping SMEs with cyber challenges in business growth, stability and security. <a href="https://www.salford.ac.uk/business/greater-manchester-cyber-foundry" target="_blank">Find out more ↗</a></p>
+    <h3>GM AI Foundry</h3>
+    <div class="subpage-imgs single"><img src="https://www.salford.ac.uk/sites/default/files/2021-07/AI%20Foundry.jpg" alt="AI Foundry" loading="lazy"></div>
+    <p>The University of Salford is a partner in the Greater Manchester AI Foundry, supporting SMEs in using artificial intelligence to become innovation-ready and develop new products and services. <a href="https://www.salford.ac.uk/business/ai-foundry" target="_blank">Find out more ↗</a></p>`,
+    links:[{t:'View on salford.ac.uk ↗',u:'https://www.salford.ac.uk/school-of-science-engineering-and-environment/advancing-greater-manchester'}]
+  }
+};
+function showSubpage(key){
+  const p=SUBPAGES[key]; if(!p) return;
+  navStack.push('main');
+  document.getElementById('sub-bc-name').textContent=p.title;
+  document.getElementById('sub-hero-img').src=p.hero;
+  document.getElementById('sub-title').textContent=p.title;
+  document.getElementById('sub-sub').textContent=p.sub;
+  let html=p.body;
+  if(p.links?.length) html+='<div class="subpage-links">'+p.links.map(l=>`<a class="btn-primary" href="${l.u}" target="_blank">${l.t}</a>`).join('')+'</div>';
+  document.getElementById('sub-content').innerHTML=html;
+  showView('subpage');
+}
 
 /* ═══ UTILITIES ═══ */
 let navStack=[], currentStaffData=[];
@@ -1519,7 +1906,7 @@ document.querySelectorAll('#view-main a[href^="#"]').forEach(a=>{
 });
 
 /* ═══ NAV ACTIVE STATE ON SCROLL ═══ */
-const sections=['about','leadership','directorates','research','courses','contact'];
+const sections=['about','leadership','engage','directorates','research','courses','work-with-us','contact'];
 const navAs=document.querySelectorAll('#main-nav-links a');
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(en=>{if(en.isIntersecting){navAs.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id);});}});
